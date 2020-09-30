@@ -1,0 +1,10 @@
+.vs/
+*.ilk
+*.pdb
+*.iobj
+*.ipdb
+Debug/
+SkinChangerDLL/Debug/
+SkinChangerDLL/Release/
+SkinChangerInjector/Debug/
+SkinChangerInjector/Release/
