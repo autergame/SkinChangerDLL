@@ -439,6 +439,10 @@ int main(int argc, char** argv)
         }
     }
 
+    char* suname = download_url("/lol-summoner/v1/current-summoner", port, auth, protocol);
+    cJSON* jsonj = cJSON_ParseWithLength(suname, strlen(suname));
+    char* summonername = (char*)cJSON_GetObjectItem(jsonj, "displayName")->value;
+
     BOOL result;
     char* Champion = (char*)calloc(32, 1);
     champ* champi = (champ*)calloc(sizeof(champ), 1);
@@ -484,8 +488,14 @@ int main(int argc, char** argv)
 
             champi->id = sknn[choose]->names[num-1]->nametwo;
             printf("Waiting league of legends.\n");
-            while (download_url("/liveclientdata/activeplayername", "2999", NULL, "https") == NULL)
+            while (1)
             {
+                char* active = download_url("/liveclientdata/activeplayername", "2999", NULL, "https");
+                if (active != NULL)
+                {
+                    if (memcmp(active+1, summonername, strlen(summonername)) == 0)
+                        break;
+                }
                 Sleep(1000);
             }
             if (injectlegue(currentdir) == 1)
