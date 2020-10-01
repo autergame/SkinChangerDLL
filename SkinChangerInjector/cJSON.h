@@ -198,7 +198,7 @@ loop_end:
     if (floate)
     {
         float* number = (float*)calloc(1, 4);
-        sscanf(number_c_string, "%g", number);
+        sscanf(number_c_string, "%f", number);
         item->value = number;
     }
     else if (minus)
