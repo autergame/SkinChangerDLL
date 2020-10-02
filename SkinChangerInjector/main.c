@@ -494,7 +494,7 @@ int main(int argc, char** argv)
                     if (var != NULL)
                     {
                         float time = *(float*)var->value;
-                        if (time > 5.f)
+                        if (time > 10.f)
                             break;
                     }
                 }
