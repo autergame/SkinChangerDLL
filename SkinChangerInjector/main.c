@@ -1,3 +1,4 @@
+//author https://github.com/autergame
 #define CURL_STATICLIB
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
@@ -439,7 +440,6 @@ int main(int argc, char** argv)
         }
     }
 
-    BOOL result;
     char* Champion = (char*)calloc(32, 1);
     champ* champi = (champ*)calloc(sizeof(champ), 1);
     while (1)
@@ -511,7 +511,7 @@ int main(int argc, char** argv)
                 Sleep(1000);
             }
 
-            result = WriteFile(pipe, champi, sizeof(champ), NULL, NULL);
+            BOOL result = WriteFile(pipe, champi, sizeof(champ), NULL, NULL);
             if (!result)
             {
                 printf("Failed to send data: %d.\n", GetLastError());
